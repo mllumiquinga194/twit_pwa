@@ -8,7 +8,7 @@ const INMUTABLE_CACHE = 'inmutable-v1';
 
 // Para manejar los archivos criticos para que la aplicacion funcione
 const APP_SHELL = [ // Si alguna de estas librerias o archivos no existe o está mal escrito, el APP_SHELL daria error
-    '/',
+    // '/', en desarrollo es necesaria esta linea pero en produccion no!!
     'index.html',
     'css/style.css',
     'img/favicon.ico',

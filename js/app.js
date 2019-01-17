@@ -1,6 +1,14 @@
+// Para Obtener el url que tengo en el navegador WEB, si dice localhost, estoy en desarrollo, si dice otra cosa, estoy en produccion
+var url = window.location.href;
+var swLocation = '/twit_pwa/sw.js';
 
 if( navigator.serviceWorker ){
-    navigator.serviceWorker.register( '/sw.js' );
+
+    // Si mi url contiene 'Localhost', estoy en desarrollo. puedo usar '/sw.js'. sino, puedo usar el valor que ya le asigne: '/twit_pwa/sw.js'
+    if(url.includes('localhost')){
+        swLocation = '/sw.js';
+    }
+    navigator.serviceWorker.register( swLocation );
 }
 
 // Referencias de jQuery
