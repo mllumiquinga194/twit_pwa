@@ -2,8 +2,8 @@
 importScripts('js/sw-utils.js');
 
 // Para manejar los caches
-const STATIC_CACHE = 'static-v3';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const STATIC_CACHE = 'static-v4';
+const DYNAMIC_CACHE = 'dynamic-v2';
 const INMUTABLE_CACHE = 'inmutable-v1';
 
 // Para manejar los archivos criticos para que la aplicacion funcione
@@ -50,6 +50,9 @@ self.addEventListener('activate', e => {
             // En este caso 'static-v1'
             // Borro los caches (los key) que sean diferentes a 'static-v1' (STATIC_CACHE) y que incluyan 'static'. si no incluyen 'static', no los borra
             if (key !== STATIC_CACHE && key.includes('static')) {
+                return caches.delete(key);
+            }
+            if (key !== DYNAMIC_CACHE && key.includes('dynamic')) {
                 return caches.delete(key);
             }
         });
